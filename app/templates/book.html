@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{book.name}}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+      <div class="container">
+	    <a href="{{book.url}}"><h1>{{book.name}}</h1></a>
+        <h2>{{book.desc}}</h2>
+
+            <li><b>Author:</b> &mdash; {{book.author}}</li>
+            <li><b>ISBN:</b> &mdash; {{book.isbn}}</li>
+            <li><b>Proximity:</b> &mdash; {{book.zip}} miles</li>
+            <li><b>Email:</b> &mdash; {{book.email}} 
+		</div></div>
+		<br>
+    <div class="container"><div class="row">
+		<h2>Some random books</h2>
+		<table class="table table-striped">
+			<tbody>
+                {% for i in books %}
+				<tr><td class="col-md-11"><b>{{i.name}}</b> &mdash; {{i.desc}}</td><td><a href="/book/{{i._id}}"><button  type="submit" class="btn btn-info btn-xs">Read More</button></a></td></tr>
+                {% endfor %}
+			</tbody>
+  		</table>
+        </div></div>
+{% endblock %}

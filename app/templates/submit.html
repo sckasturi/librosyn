@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Submit a book here!{% endblock %}
+{% block content %}
+<div class="jumbotron">
+      <div class="container">
+		<form method="post" action="/api/book">
+	    <h1>Let's add your book!</h1>
+             <input type="text" class="form-control" name="title" placeholder="Name of your book." autocomplete="off" required/>
+             <input type="text" class="form-control" name="author" placeholder="Author of your book (Last, First)" autocomplete="off" required/>
+             <input type="text" class="form-control" name="name" placeholder="Your Name" required/>
+             <input type="email" class="form-control" name="email" placeholder="Your email address" required/>
+             <input type="number" class="form-control" name="zipcode" placeholder="Your zipcode" required/>
+             <button type="submit" class="btn btn-primary btn-block">Submit</button>
+         </form>
+          
+		</div></div>
+		<br>
+    <div class="container"><div class="row">
+		<h2>Some random books</h2>
+		<table class="table table-striped">
+			<tbody>
+                {% for i in books %}
+				<tr><td class="col-md-11"><b>{{i.name}}</b> &mdash; {{i.desc}}</td><td><a href="/book/{{i._id}}"><button  type="submit" class="btn btn-info btn-xs">Read More</button></a></td></tr>
+                {% endfor %}
+			</tbody>
+  		</table>
+        </div></div>
+{% endblock %}
