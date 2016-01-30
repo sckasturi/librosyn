@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 from requests import get
 from bs4 import BeautifulSoup
+
 user_agent = {'User-agent': 'Mozilla/5.0'}
 
 def zipdist(zip1, zip2):
@@ -30,3 +30,11 @@ def finddesc(isbn):
     desc = soup.find_all('noscript')[1].getText().strip()
     desc = (desc[:500] + "...") if len(desc) > 500 else desc
     return desc
+
+def get_books():
+    db = client.librosyn
+    books = []
+    book_list = db.books.find()
+    for i in book_list:
+        books.append(i)]
+    return sample(books, 5)
