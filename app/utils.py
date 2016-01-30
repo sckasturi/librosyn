@@ -36,5 +36,5 @@ def get_books():
     books = []
     book_list = db.books.find()
     for i in book_list:
-        books.append(i)]
+        books.append(i)
     return sample(books, 5)
