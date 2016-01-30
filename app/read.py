@@ -8,6 +8,15 @@ from app.utils import zipdist
 client = MongoClient()
 
 @app.route('/api/read', methods = ['GET'])
+def read():
+    query = request.args.to_dict()
+    db = client.librosyn
+    book = db.books.find_one({"title": query["title"].lower()})
+    if not book["_id"]:
+        return redirect('/books/none')
+    return redirect('/books/' + str(book["_id"]) + '/' + str(query["zipcode"]))
+
+#@app.route('/api/read', methods = ['GET'])
 def reader():
     query = request.args.to_dict()
     print(query)
@@ -21,7 +30,7 @@ def reader():
     empty_keys = [k for k,v in query.items() if len(v) < 1] 
     for i in empty_keys:
         del query[i]
-    for books in db.books.find(query):
+    for books in db.books.find(query["title"]):
         books.append(book)
     if len(books) == 0:
         return redirect('/book/none')

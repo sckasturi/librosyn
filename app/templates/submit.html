@@ -20,7 +20,7 @@
 		<table class="table table-striped">
 			<tbody>
                 {% for i in books %}
-				<tr><td class="col-md-11"><b>{{i.name}}</b> &mdash; {{i.desc}}</td><td><a href="/book/{{i._id}}"><button  type="submit" class="btn btn-info btn-xs">Read More</button></a></td></tr>
+				<tr><td class="col-md-11"><b>{{i.title}}</b> &mdash; {{i.author}}</td><td><a href="/book/{{i._id}}"><button  type="submit" class="btn btn-info btn-xs">Read More</button></a></td></tr>
                 {% endfor %}
 			</tbody>
   		</table>
