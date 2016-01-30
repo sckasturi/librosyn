@@ -1,6 +1,7 @@
 from requests import get
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
+from random import sample
 
 client = MongoClient()
 user_agent = {'User-agent': 'Mozilla/5.0'}

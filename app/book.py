@@ -3,7 +3,6 @@ from flask import jsonify, request, render_template, redirect
 from pymongo import MongoClient
 from json import loads as json
 from bson.objectid import ObjectId
-from random import choice, sample
 from app import utils
 
 client = MongoClient()
