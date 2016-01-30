@@ -6,6 +6,8 @@ from bson.objectid import ObjectId
 from random import choice, sample
 from app import utils
 
+client = MongoClient()
+
 @app.route('/submit', methods = ['GET'])
 def submit_book():
     return render_template("submit.html", books = utils.get_books())
