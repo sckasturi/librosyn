@@ -2,6 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from random import sample
+from titlecase import titlecase
 
 client = MongoClient()
 user_agent = {'User-agent': 'Mozilla/5.0'}
@@ -37,7 +38,11 @@ def finddesc(isbn):
 def get_books():
     db = client.librosyn
     books = []
+    booksample = []
     book_list = db.books.find()
     for i in book_list:
         books.append(i)
-    return sample(books, 5)
+    for i in sample(books, 5):
+        i['title'] = titlecase(i['title'])
+        booksample.append(i)
+    return booksample

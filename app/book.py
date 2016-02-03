@@ -11,6 +11,17 @@ client = MongoClient()
 def submit_book():
     return render_template("submit.html", books = utils.get_books())
 
+@app.route('/api/book', methods = ['POST'])
+def bookger():
+    input_ = request.form.to_dict()
+    db = client.librosyn
+    #input_["topics"] = input_["topics"].lower().replace(" ", "").split(",")
+    #input_["topics"] = json(str(input_["topics"]).lower().replace("'","\""))
+    db.books.insert(input_)
+    del input_["_id"]
+    return redirect("/")
+
+
 @app.route('/book/<uid>')
 @app.route('/books/<uid>')
 @app.route('/book/<uid>/<zipc>')
